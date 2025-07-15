@@ -1,0 +1,11 @@
+{
+    "COMPLETED": {"en": "Completed", "fr": "Achevée"},
+    "REPORTED": {"en": "Reported", "fr": "Reporter"},
+    "Repair": {"en": "Repair", "fr": "Réparation"},
+    "Replacement": {"en": "Replacement", "fr": "Remplacement"},
+    "Upgrade": {"en": "Upgrade", "fr": "Mise a jour"},
+    "Reinstallation": {"en": "Reinstallation", "fr": "Réinstallation"},
+    "Reset": {"en": "Reset", "fr": "Rénitialisation"},
+    "PO Approval pending": {"en": "PO Approval pending", "fr": "Bon de commande en attente d’approbation"},
+    "Client Issue": {"en": "Client Issue", "fr": "Problème externe du DAB"}
+}

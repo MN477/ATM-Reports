@@ -1,0 +1,8 @@
+{
+    "HW ISSUE": {"en": "hardware issue", "fr": "Problème matériel"},
+    "SW ISSUE": {"en": "software issue", "fr": "Problème logiciel"},
+    "CDM": {"en": "distribution module", "fr": "Module de distribution"},
+    "MTS": {"en": "ticket validation unit", "fr": "Unité de validation des billets"},
+    "PC": {"en": "central processing unit", "fr": "Unité centrale de traitement"},
+    "PROCESSOR": {"en": "processor", "fr": "Processeur"}
+}
