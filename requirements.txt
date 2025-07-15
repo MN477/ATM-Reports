@@ -1,0 +1,13 @@
+# Core dependencies
+pandas
+openpyxl
+torch
+transformers
+flask
+llama-cpp-python
+streamlit
+requests
+
+# Optional (but common for local LLM setup)
+sentencepiece  # Needed for some transformer models
+protobuf       # Sometimes required by tokenizer/model versions

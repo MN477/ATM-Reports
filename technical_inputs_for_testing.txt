@@ -1,0 +1,50 @@
+Submitted Issue: HW ISSUE_CDM
+
+Diagnosed Issue: HW ISSUE_CDM_Feeder 2_Repair
+
+***********************************************************************
+
+Submitted Issue: HW ISSUE_CDM
+
+Diagnosed Issue: HW ISSUE_CDM_Transporter_Slls Sensor_Slipped
+Belt_Replacement
+
+************************************************************************
+
+Submitted Issue: HW ISSUE_CDM_TRANSPORTER
+
+Diagnosed Issue: HW ISSUE_CDM_TRANSPORTER_Meds Sensor_Belt Has
+Torn_Remplacement
+
+**************************************************************************
+
+Submitted Issue: HW ISSUE_UPS
+
+Diagnosed Issue: HW ISSUE_UPS_Repair
+
+**************************************************************************
+
+
+Diagnosed Issue: HW ISSUE_PINPAD
+
+Diagnosed Issue: HW ISSUE_PINPAD_Replacement
+
+**************************************************************************
+
+
+Submitted Issue: HW ISSUE_IDC
+
+Diagnosed Issue: HW ISSUE_IDC_Roller_Replacement
+*************************************************************************
+
+Submitted Issue: SW ISSUE_ATM APP
+
+Diagnosed Issue: SW ISSUE_ATM APP_Reinstallation
+******************************************************
+Compound issues:
+
+HW ISSUE_CDM_Presentor_MTS_Replacement / HW ISSUE_CDM_Repair 
+
+HW ISSUE_CIM_Escrow_Replacement / HW ISSUE_CDM_Presentor_MTS_Upgrade 
+
+HW ISSUE_CIM_Escrow_Replacement / HW ISSUE_CDM_Upgrade/ HW ISSUE_PINPAD_Upgrade / HW ISSUE_PC_Disk_Reset/HW ISSUE_CAMERA_Upgrade 

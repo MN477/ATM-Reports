@@ -1,0 +1,22 @@
+# Normalize line endings
+* text=auto
+
+# Python files
+*.py text eol=lf
+
+# JSON files
+*.json text eol=lf
+
+# Markdown
+*.md text eol=lf
+
+# Log files
+*.log text eol=lf
+
+# VSCode workspace
+*.code-workspace text eol=lf
+
+# Ignore virtual environment folders (already in .gitignore, but this is a fallback)
+venv/ export-ignore
+venv311/ export-ignore
+
