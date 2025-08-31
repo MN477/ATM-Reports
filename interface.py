@@ -27,6 +27,20 @@ st.markdown("""
         max-height: none !important;
         white-space: pre-wrap !important;
     }
+    .stTextArea textarea:disabled {
+        background-color: white;
+        padding: 15px;
+        border: 2px solid #3B82F6;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        white-space: pre-wrap !important;
+        overflow-wrap: break-word !important;
+        font-family: inherit;
+        color: inherit;
+        resize: none !important;
+        overflow: hidden !important;
+        height: 400px !important;
+    }
     .stButton>button {
         background-color: #3B82F6;
         color: white;
@@ -75,6 +89,10 @@ if "english_message" not in st.session_state:
     st.session_state.english_message = ""
 if "translated_message" not in st.session_state:
     st.session_state.translated_message = ""
+if "pure_english_message" not in st.session_state:
+    st.session_state.pure_english_message = ""
+if "pure_translated_message" not in st.session_state:
+    st.session_state.pure_translated_message = ""
 
 # Fallback fix for missing intervention
 def generate_fallback_if_missing(english_message, technical_input):
@@ -118,21 +136,23 @@ with col1:
                         english_message = data.get("english_report", "")
                         if english_message:
                             english_message = generate_fallback_if_missing(english_message, technical_input)
+                            st.session_state.pure_english_message = english_message
                             st.session_state.english_message = f"Generated on {current_time.strftime('%Y-%m-%d %I:%M %p CET')}:\n\n{english_message}"
                         else:
                             st.error("No English report received.")
                     else:
                         st.error(f"English generation error: {res.text}")
 
-                    if st.session_state.english_message:
+                    if st.session_state.pure_english_message:
                         trans_res = requests.post(
                             "http://localhost:5002/translate",
-                            json={"text": st.session_state.english_message},
+                            json={"text": st.session_state.pure_english_message},
                             timeout=120
                         )
                         if trans_res.status_code == 200:
                             translation = trans_res.json().get("translated_text", "")
                             if translation:
+                                st.session_state.pure_translated_message = translation
                                 st.session_state.translated_message = f"Translated on {current_time.strftime('%Y-%m-%d %I:%M %p CET')}:\n\n{translation}"
                             else:
                                 st.error("No translation received.")
@@ -161,8 +181,10 @@ with col2:
                         english_message = data.get("english_report", "")
                         if english_message:
                             english_message = generate_fallback_if_missing(english_message, technical_input)
+                            st.session_state.pure_english_message = english_message
                             st.session_state.english_message = f"Generated on {current_time.strftime('%Y-%m-%d %I:%M %p CET')}:\n\n{english_message}"
                             st.session_state.translated_message = ""
+                            st.session_state.pure_translated_message = ""
                             st.success("English report generated!")
                         else:
                             st.error("No English report received.")
@@ -174,19 +196,20 @@ with col2:
 # French Only
 with col3:
     if st.button("French Only"):
-        if not st.session_state.english_message:
+        if not st.session_state.pure_english_message:
             st.warning("Please generate an English message first.")
         else:
             with st.spinner("Generating French report..."):
                 try:
                     trans_res = requests.post(
                         "http://localhost:5002/translate",
-                        json={"text": st.session_state.english_message},
+                        json={"text": st.session_state.pure_english_message},
                         timeout=120
                     )
                     if trans_res.status_code == 200:
                         translation = trans_res.json().get("translated_text", "")
                         if translation:
+                            st.session_state.pure_translated_message = translation
                             st.session_state.translated_message = f"Translated on {current_time.strftime('%Y-%m-%d %I:%M %p CET')}:\n\n{translation}"
                             st.success("French report generated!")
                         else:
@@ -199,9 +222,9 @@ with col3:
 # Output English Report
 if st.session_state.english_message:
     st.subheader("English Report")
-    st.markdown(f"<div style='white-space: pre-wrap; background-color: white; padding: 15px; border-radius: 10px; border: 2px solid #3B82F6;'>{st.session_state.english_message}</div>", unsafe_allow_html=True)
+    st.text_area("", value=st.session_state.english_message, height=400, disabled=True)
 
 # Output French Translation
 if st.session_state.translated_message:
     st.subheader("French Translation")
-    st.markdown(f"<div style='white-space: pre-wrap; background-color: white; padding: 15px; border-radius: 10px; border: 2px solid #3B82F6;'>{st.session_state.translated_message}</div>", unsafe_allow_html=True)
+    st.text_area("", value=st.session_state.translated_message, height=400, disabled=True)
